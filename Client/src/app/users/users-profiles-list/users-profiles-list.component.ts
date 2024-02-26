@@ -21,10 +21,12 @@ export class UsersProfilesListComponent implements OnInit {
   usersProfiles: UserProfile[] = [];
   totalPages: number = 1;
   pagesArray: number[] = [];
+  orderByPropertySort: string = '';
+  sort: string[] = [];
 
   constructor(
-    private router: Router, 
-    private authService: AuthService, 
+    private router: Router,
+    private authService: AuthService,
     private usersService: UsersService,
     private activatedRoute: ActivatedRoute
   ) {
@@ -54,6 +56,14 @@ export class UsersProfilesListComponent implements OnInit {
   }
 
   reLoadQuery(): void {
+    if (this.orderByPropertySort !== "") {
+      this.sort = this.orderByPropertySort.split(" ");
+      this.usersProfilesDbFilter.orderByProperty = this.sort[0];
+      this.usersProfilesDbFilter.sort = this.sort[1];
+    } else {
+      this.usersProfilesDbFilter.orderByProperty = "";
+      this.usersProfilesDbFilter.sort = "";
+    }
     this.router.navigate([], {
       relativeTo: this.activatedRoute,
       queryParams: { ...this.usersProfilesDbFilter },
