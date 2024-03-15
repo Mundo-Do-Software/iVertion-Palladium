@@ -57,7 +57,7 @@
             Token
             </summary>
         </member>
-        <member name="M:iVertion.WebApi.Controllers.TokenController.#ctor(iVertion.Domain.Account.IAuthenticate,Microsoft.Extensions.Configuration.IConfiguration,iVertion.Domain.Account.IUserInterface{iVertion.Infra.Data.Identity.ApplicationUser},iVertion.Application.Interfaces.IUserProfileService,iVertion.Application.Interfaces.IRoleProfileService)">
+        <member name="M:iVertion.WebApi.Controllers.TokenController.#ctor(iVertion.Domain.Account.IAuthenticate,Microsoft.Extensions.Configuration.IConfiguration,iVertion.Domain.Account.IUserInterface{iVertion.Infra.Data.Identity.ApplicationUser},iVertion.Application.Interfaces.IUserProfileService,iVertion.Application.Interfaces.IRoleProfileService,iVertion.Application.Interfaces.IAdditionalUserRoleService)">
             <summary>
             Contructor.
             </summary>
@@ -66,6 +66,7 @@
             <param name="userService"></param>
             <param name="userProfileService"></param>
             <param name="roleProfileService"></param>
+            <param name="additionalUserRoleService"></param>
         </member>
         <member name="M:iVertion.WebApi.Controllers.TokenController.ValidateToken">
             <summary>
@@ -85,7 +86,7 @@
             User
             </summary>
         </member>
-        <member name="M:iVertion.WebApi.Controllers.UserController.#ctor(iVertion.Domain.Account.IAuthenticate,iVertion.Domain.Account.IUserInterface{iVertion.Infra.Data.Identity.ApplicationUser},iVertion.Domain.Account.IRoleInterface{Microsoft.AspNetCore.Identity.IdentityRole},iVertion.Application.Interfaces.IUserProfileService,iVertion.Application.Interfaces.IRoleProfileService,iVertion.Application.Interfaces.IAddtionalUserRoleService)">
+        <member name="M:iVertion.WebApi.Controllers.UserController.#ctor(iVertion.Domain.Account.IAuthenticate,iVertion.Domain.Account.IUserInterface{iVertion.Infra.Data.Identity.ApplicationUser},iVertion.Domain.Account.IRoleInterface{Microsoft.AspNetCore.Identity.IdentityRole},iVertion.Application.Interfaces.IUserProfileService,iVertion.Application.Interfaces.IRoleProfileService,iVertion.Application.Interfaces.IAdditionalUserRoleService)">
             <summary>
             Constructor
             </summary>
@@ -94,7 +95,7 @@
             <param name="roleService"></param>
             <param name="userProfileService"></param>
             <param name="roleProfileService"></param>
-            <param name="addtionalUserRoleService"></param>
+            <param name="additionalUserRoleService"></param>
         </member>
         <member name="M:iVertion.WebApi.Controllers.UserController.Get">
             <summary>
@@ -158,11 +159,18 @@
             <param name="roleProfileFilterDb"></param>
             <returns></returns>
         </member>
-        <member name="M:iVertion.WebApi.Controllers.UserController.AddAddtionalUserRoleAsync(iVertion.WebApi.Models.AddtionalUserRoleModel)">
+        <member name="M:iVertion.WebApi.Controllers.UserController.AddAddtionalUserRoleAsync(iVertion.WebApi.Models.AdditionalUserRoleModel)">
             <summary>
             Adds an additional role to a user beyond the role profile they belong to.
             </summary>
-            <param name="addtionalUserRoleModel"></param>
+            <param name="additionalUserRoleModel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:iVertion.WebApi.Controllers.UserController.RemoveAddtionalUserRoleAsync(iVertion.WebApi.Models.AdditionalUserRoleModel)">
+            <summary>
+            Remove an additional role to a user beyond the role profile they belong to.
+            </summary>
+            <param name="additionalUserRoleModel"></param>
             <returns></returns>
         </member>
         <member name="M:iVertion.WebApi.Controllers.UserController.GetRolesAsync">
@@ -242,17 +250,17 @@
             <param name="myUserNameModel"></param>
             <returns></returns>
         </member>
-        <member name="T:iVertion.WebApi.Models.AddtionalUserRoleModel">
+        <member name="T:iVertion.WebApi.Models.AdditionalUserRoleModel">
             <summary>
             This model is the body of users' requests for additional roles.
             </summary>
         </member>
-        <member name="P:iVertion.WebApi.Models.AddtionalUserRoleModel.Role">
+        <member name="P:iVertion.WebApi.Models.AdditionalUserRoleModel.Role">
             <summary>
             A role registered in the Identity roles.
             </summary>
         </member>
-        <member name="P:iVertion.WebApi.Models.AddtionalUserRoleModel.UserName">
+        <member name="P:iVertion.WebApi.Models.AdditionalUserRoleModel.UserName">
             <summary>
             An existing username on Identity.
             </summary>
